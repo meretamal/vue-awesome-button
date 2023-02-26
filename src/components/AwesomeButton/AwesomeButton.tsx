@@ -11,7 +11,7 @@ export const AwesomeButton = defineComponent({
       default: 'aws-btn',
     },
     type: {
-      type: Object as PropType<ButtonType>,
+      type: String as PropType<ButtonType>,
       required: false,
       default: 'primary'
     },
