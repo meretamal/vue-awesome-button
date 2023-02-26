@@ -8,6 +8,7 @@ export const AwesomeButton = defineComponent({
   name: 'AwesomeButton',
   props: {
     disabled: Boolean,
+    hidden: Boolean,
     rootElement: {
       type: String,
       required: false,
@@ -30,6 +31,7 @@ export const AwesomeButton = defineComponent({
       `${props.rootElement}--${props.type}`,
       {
         [`${props.rootElement}--disabled`]: props.disabled,
+        [`${props.rootElement}--hidden`]: props.hidden,
         [`${props.rootElement}--${props.size}`]: props.size,
       }
     ]) 

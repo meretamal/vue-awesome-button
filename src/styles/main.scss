@@ -227,5 +227,10 @@ button.#{$button-root} {
   }
 
   @include getColors($button-colors);
+
+  &--hidden {
+    opacity: 0;
+  }
+
   @include getSizes($button-sizes);
 }
