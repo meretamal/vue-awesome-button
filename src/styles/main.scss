@@ -1,0 +1,219 @@
+@import './variables';
+@import './lists';
+
+@mixin color-pattern($color) {
+  $background: nth($color, 2);
+  .#{$button-root}__wrapper {
+    &:before {
+      background: nth($color, 3);
+    }
+  }
+  .#{$button-root}__content {
+    background: nth($color, 2);
+    color: nth($color, 4);
+    path {
+      fill: nth($color, 4);
+    }
+    @if (length($color) > 6) {
+      border: nth($color, 7);
+    }
+  }
+  @if (length($color) > 4) {
+    .#{$button-root}__wrapper:hover {
+      .#{$button-root}__content {
+        background: nth($color, 5);
+      }
+    }
+  }
+  @if (length($color) > 5) {
+    &.#{$button-root}--active {
+      .#{$button-root}__wrapper {
+        .#{$button-root}__content {
+          background: nth($color, 6);
+        }
+      }
+    }
+  }
+  &.#{$button-root}--progress {
+    .#{$button-root}__content {
+      > span {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .#{$button-root}__progress {
+      &:before,
+      &:after {
+        color: nth($color, 4);
+      }
+    }
+  }
+}
+
+@mixin getColors($colors) {
+  @if ($colors) {
+    @each $color in $colors {
+      &--#{nth($color, 1)} {
+        @include color-pattern($color);
+      }
+    }
+  }
+}
+
+%fill-parent {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+%clear-spacing {
+  padding: 0;
+  margin: 0;
+}
+
+%clear-focus {
+  outline-color: 0;
+  outline-style: none;
+  outline-width: 0;
+}
+
+%clear-selection {
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button.#{$button-root} {
+  .#{$button-root}__wrapper {
+    margin-top: calc($button-raise-level * -1);
+  }
+}
+
+.#{$button-root} {
+  @extend %clear-spacing;
+  @extend %clear-focus;
+  @extend %clear-selection;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  height: $button-default-height;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  font-size: $button-default-font-size;
+  line-height: $button-default-line-height;
+  font-weight: $button-font-weight;
+  font-family: $button-font-family;
+  font-style: $button-font-style;
+  letter-spacing: $button-letter-spacing;
+  text-rendering: auto;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.1s ease-out;
+  border: none;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+
+  .#{$button-root}__wrapper {
+    position: relative;
+    font-family: $button-font-family;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: calc(100% - $button-raise-level);
+
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+    &:before {
+      @extend %fill-parent;
+      content: ' ';
+      border-radius: $button-default-border-radius;
+      top: auto;
+      bottom: calc($button-raise-level) * -1;
+      z-index: 1;
+      transition: transform $transform-speed ease-out,
+        background $transform-speed ease-out;
+    }
+    &:after {
+      @extend %fill-parent;
+      content: ' ';
+      background-color: rgba(0, 0, 0, 0.15);
+      border-radius: $button-default-border-radius;
+      z-index: 2;
+      width: 0;
+      top: $button-raise-level
+    }
+  }
+
+  .#{$button-root}__content {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: $button-default-border-radius;
+    text-indent: 0;
+    z-index: 1;
+    overflow: hidden;
+    padding: 0 $button-horizontal-padding;
+    backface-visibility: hidden;
+    transform-style: flat;
+    transform: skew(0) translate3d(0, 0, 0);
+    transition: border $transform-speed ease-out,
+      transform $transform-speed ease-out,
+      background $transform-speed ease-out,
+      color $transform-speed ease-out;
+    
+    &:after {
+      @extend %fill-parent;
+    }
+
+    > span:nth-child(1) {
+      display: flex;
+      align-items: center;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transform: skew(0) translate3d(0, 0, 0);
+
+      > svg:only-child {
+        margin: 0;
+      }
+    }
+
+    > svg:nth-child(1) {
+      margin-right: 4px;
+    }
+
+    > svg:nth-last-child(1) {
+      margin-left: 4px;
+    }
+  }
+  &:focus {
+    @extend %clear-focus;
+  }
+  &:before {
+    content: ' ';
+    background-color: $button-shadow-color;
+    width: calc(100% - 2px);
+    height: calc(100% - ($button-raise-level * $button-shadow-divisor));
+    bottom: calc(0px - ($button-raise-level / $button-shadow-divisor));
+    left: 1px;
+    position: absolute;
+    border-radius: $button-default-border-radius;
+    transform: skewY(0) translate3d(0, 0, 0);
+    transition: transform calc($transform-speed * 0.8) ease-out,
+      background calc($transform-speed * 0.8) ease-out;
+  }
+
+  @include getColors($button-colors);
+}
