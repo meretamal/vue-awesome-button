@@ -63,6 +63,17 @@
   }
 }
 
+@mixin getSizes($sizes) {
+  @each $size in $sizes {
+    &--#{nth($size, 1)} {
+      width: nth($size, 2);
+      height: nth($size, 3);
+      font-size: nth($size, 4);
+      line-height: nth($size, 5);
+    }
+  }
+}
+
 %fill-parent {
   display: block;
   position: absolute;
@@ -216,4 +227,5 @@ button.#{$button-root} {
   }
 
   @include getColors($button-colors);
+  @include getSizes($button-sizes);
 }

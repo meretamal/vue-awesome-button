@@ -61,3 +61,35 @@ $button-colors: (
     $button-placeholder-color-active,
     $button-placeholder-border
   );
+
+/**
+ button-size: size-name, width, height, font-size, line-height
+*/
+$button-sizes: (
+    'icon',
+    $button-icon-width,
+    $button-icon-height,
+    calc($button-default-font-size),
+    calc($button-default-line-height)
+  ),
+  (
+    'small',
+    $button-small-width,
+    $button-small-height,
+    $button-default-font-size,
+    $button-default-line-height
+  ),
+  (
+    'medium',
+    $button-medium-width,
+    $button-medium-height,
+    $button-default-font-size,
+    $button-default-line-height
+  ),
+  (
+    'large',
+    $button-large-width,
+    $button-large-height,
+    $button-default-font-size,
+    $button-default-line-height
+  );
