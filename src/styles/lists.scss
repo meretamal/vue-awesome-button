@@ -1,3 +1,12 @@
+/**
+  button-color:
+    color-name, (required)
+    background, (required)
+    darker-background, (required)
+    font-color, (required)
+    hover-background,
+    border,
+*/
 $button-colors: (
     'primary',
     $button-primary-color,
