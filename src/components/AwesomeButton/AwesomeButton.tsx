@@ -5,6 +5,7 @@ export type ButtonType = 'primary' | 'secondary' | 'link' | 'danger';
 export const AwesomeButton = defineComponent({
   name: 'AwesomeButton',
   props: {
+    disabled: Boolean,
     rootElement: {
       type: String,
       required: false,
@@ -20,6 +21,9 @@ export const AwesomeButton = defineComponent({
     const rootClasses = computed(() => [    
       props.rootElement,
       `${props.rootElement}--${props.type}`,
+      {
+        [`${props.rootElement}--disabled`]: props.disabled,
+      }
     ]) 
     return () => (
       <button class={rootClasses.value}>
