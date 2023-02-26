@@ -57,7 +57,7 @@ export const AwesomeButton = defineComponent({
       pressPosition.value = `${props.rootElement}--active`;
     };
 
-    const moveEvents = computed(() => ({
+    const mouseEvents = computed(() => ({
       onMouseleave: () => {
         clearPress();
       },
@@ -109,7 +109,7 @@ export const AwesomeButton = defineComponent({
         type="button"
         ref={button}
         class={rootClasses.value}
-        {...moveEvents.value}
+        {...mouseEvents.value}
       >
         <span class={`${props.rootElement}__wrapper`}>
           <span class={`${props.rootElement}__content`}>
