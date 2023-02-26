@@ -1,5 +1,5 @@
-import { computed, defineComponent, PropType, ref } from "vue";
-import { Nullable } from "../../types/utils";
+import { computed, defineComponent, PropType, ref } from 'vue';
+import { Nullable } from '../../types/utils';
 
 export type ButtonType = 'primary' | 'secondary' | 'link' | 'danger';
 export type ButtonSize = 'icon' | 'small' | 'medium' | 'large';
@@ -26,14 +26,14 @@ export const AwesomeButton = defineComponent({
     type: {
       type: String as PropType<ButtonType>,
       required: false,
-      default: 'primary'
+      default: 'primary',
     },
   },
   setup(props, { slots, emit }) {
     const pressPosition = ref<Nullable<string>>(null);
     const state = ref<Nullable<ButtonState>>(null);
     const button = ref<Nullable<HTMLButtonElement>>(null);
-    const rootClasses = computed(() => [    
+    const rootClasses = computed(() => [
       props.rootElement,
       `${props.rootElement}--${props.type}`,
       {
@@ -42,13 +42,13 @@ export const AwesomeButton = defineComponent({
         [`${props.rootElement}--${props.size}`]: props.size,
         [`${props.rootElement}--${state.value}`]: state.value,
         [`${pressPosition.value}`]: pressPosition.value,
-      }
+      },
     ]);
 
     const clearPress = () => {
       state.value = null;
       pressPosition.value = null;
-    }
+    };
 
     const pressIn = () => {
       if (props.disabled) {
@@ -59,11 +59,11 @@ export const AwesomeButton = defineComponent({
 
     const moveEvents = computed(() => ({
       onMouseleave: () => {
-        clearPress()
+        clearPress();
       },
 
       onMousedown: (event: MouseEvent) => {
-        emit('mousedown', event)
+        emit('mousedown', event);
         if (event.button !== 0) {
           return;
         }
@@ -71,12 +71,12 @@ export const AwesomeButton = defineComponent({
       },
 
       onMouseup: (event: MouseEvent) => {
-        emit('mouseup', event)
+        emit('mouseup', event);
         if (props.disabled) {
           event.preventDefault();
           return;
         }
-        clearPress()
+        clearPress();
       },
 
       onMousemove: (event: MouseEvent) => {
@@ -87,31 +87,36 @@ export const AwesomeButton = defineComponent({
         if (buttonElement) {
           const { left } = buttonElement.getBoundingClientRect();
           const width = buttonElement.offsetWidth;
-          state.value =
-            event.pageX < left + width * 0.3
-              ? 'left'
-              : event.pageX > left + width * 0.65
-              ? 'right'
-              : 'middle';
+          if (event.pageX < left + width * 0.3) {
+            state.value = 'left';
+          } else if (event.pageX > left + width * 0.65) {
+            state.value = 'right';
+          } else {
+            state.value = 'middle';
           }
+        }
       },
 
       onMouseenter: () => {
         if (props.disableMoveEvents) {
           state.value = 'middle';
         }
-      }
-    }))
+      },
+    }));
 
     return () => (
-      <button ref={button} class={rootClasses.value} {...moveEvents.value}>
+      <button
+        type="button"
+        ref={button}
+        class={rootClasses.value}
+        {...moveEvents.value}
+      >
         <span class={`${props.rootElement}__wrapper`}>
           <span class={`${props.rootElement}__content`}>
-            { slots.default?.() }
+            {slots.default?.()}
           </span>
         </span>
       </button>
-    )
-  }
+    );
+  },
 });
-
