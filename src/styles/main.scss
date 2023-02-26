@@ -232,5 +232,27 @@ button.#{$button-root} {
     opacity: 0;
   }
 
+  &--active {
+    &:before {
+      will-change: transform;
+      transform: translate3d(
+        0,
+        calc(($button-raise-level - $button-pressed-level) * -1),
+        0
+      );
+    }
+    .#{$button-root}__content {
+      will-change: transform;
+      transition: transform calc($transform-speed * 0.8) ease-out,
+        background calc($transform-speed * 0.8) ease-out,
+        color calc($transform-speed * 0.8) ease-out;
+      transform: translate3d(
+        0,
+        calc($button-raise-level - $button-pressed-level),
+        0
+      );
+    }
+  }
+
   @include getSizes($button-sizes);
 }
