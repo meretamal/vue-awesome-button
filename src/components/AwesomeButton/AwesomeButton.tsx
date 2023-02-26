@@ -1,4 +1,6 @@
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, PropType } from "vue";
+
+export type ButtonType = 'primary' | 'secondary' | 'link' | 'danger';
 
 export const AwesomeButton = defineComponent({
   name: 'AwesomeButton',
@@ -9,10 +11,10 @@ export const AwesomeButton = defineComponent({
       default: 'aws-btn',
     },
     type: {
-      type: String,
+      type: Object as PropType<ButtonType>,
       required: false,
       default: 'primary'
-    }
+    },
   },
   setup(props, { slots }) {
     const rootClasses = computed(() => [    
