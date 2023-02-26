@@ -17,6 +17,7 @@ export default {
       },
     },
     disableMoveEvents: {
+      name: 'disable-move-events',
       control: { type: 'boolean' },
       description:
         'If set to true, when hovering the button, it will only be pressed from the middle',
