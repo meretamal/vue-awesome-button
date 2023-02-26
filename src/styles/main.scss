@@ -74,6 +74,18 @@
   }
 }
 
+@mixin button-hover-skew($direction) {
+  &:before {
+    transform: skewY(calc(1deg * #{$button-hover-pressure} * #{$direction}))
+      translate3d(0, calc(-1px * #{$button-hover-pressure} / 2), 0);
+  }
+  .#{$button-root}__content {
+    transform: skewY(
+      calc(1deg * #{$button-hover-pressure} * #{-$direction})
+    );
+  }
+}
+
 %fill-parent {
   display: block;
   position: absolute;
@@ -230,6 +242,26 @@ button.#{$button-root} {
 
   &--hidden {
     opacity: 0;
+  }
+
+  &--between {
+    .#{$button-root}__content {
+      justify-content: space-between;
+    }
+  }
+  &--left {
+    @include button-hover-skew(1);
+  }
+  &--right {
+    @include button-hover-skew(-1);
+  }
+  &--middle {
+    &:before {
+      transform: translate3d(0, calc(-1px * $button-hover-pressure), 0);
+    }
+    .#{$button-root}__content {
+      transform: translate3d(0, calc(1px * $button-hover-pressure), 0);
+    }
   }
 
   &--active {
