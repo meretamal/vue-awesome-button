@@ -1,18 +1,46 @@
-# Vue 3 + TypeScript + Vite
+# Vue Awesome Button
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Vue Awesome Button is a Vue 3 compatible component that renders an animated 3D button, for you tu use in your own projects.
 
-## Recommended IDE Setup
+## Acknowledgments
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This project is based on [Rafael Caferati's](https://github.com/rcaferati) work and his very own [React Awesome Button](https://github.com/rcaferati/react-awesome-button). He's an increible award winning software engineer, so go and check some of the amazing stuff he has made.
 
-## Type Support For `.vue` Imports in TS
+## Instalation
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Using npm:
+```bash
+npm install --save vue-awesome-button
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Using yarn:
+```bash
+yarn add vue-awesome-button
+```
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## `AwesomeButton` example
+```html
+<template>
+  <AwesomeButton>Hello World</AwesomeButton>
+</template>
+<script lang="ts">
+import { AwesomeButton } from 'vue-awesome-button';
+</script>   
+```
+## `AwesomeButton` props
+
+| Attribute           | Type                                                      | Default     | Description                                                                         |
+|---------------------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------|
+| disabled            | `boolean`                                                 | `false`     | Renders the disabled button and disables the button's actions                       |
+| disable-move-events | `boolean`                                                 | `false`     | If set to `true`, when hovering the button, it will only be pressed from the middle |
+| hidden              | `boolean`                                                 | `false`     | Changes the opacity of the button                                                   |
+| size                | `null \| "small" \| "medium" \| "large"`                  | `null`      | Changes the size of the button                                                      |
+| type                | `string` `"primary" \| "secondary" \| "link" \| "danger"` | `"primary"` | Sets the button's variant                                                           |
+
+## Comntributing
+
+To contribute to the project, please check the **CONTRIBUTING.md** document.
+
+## License
+
+MIT. Copyright (c) 2023 Moisés Retamal.
