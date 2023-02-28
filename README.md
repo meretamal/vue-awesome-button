@@ -37,10 +37,6 @@ import { AwesomeButton } from 'vue-awesome-button';
 | size                | `null \| "small" \| "medium" \| "large"`                  | `null`      | Changes the size of the button                                                      |
 | type                | `"primary" \| "secondary" \| "link" \| "danger"` | `"primary"` | Sets the button's variant                                                           |
 
-## Contributing
-
-To contribute to the project, please check the **CONTRIBUTING.md** document.
-
 ## License
 
 MIT. Copyright (c) 2023 Moisés Retamal.
