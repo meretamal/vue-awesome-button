@@ -35,7 +35,7 @@ import { AwesomeButton } from 'vue-awesome-button';
 | disable-move-events | `boolean`                                                 | `false`     | If set to `true`, when hovering the button, it will only be pressed from the middle |
 | hidden              | `boolean`                                                 | `false`     | Changes the opacity of the button                                                   |
 | size                | `null \| "small" \| "medium" \| "large"`                  | `null`      | Changes the size of the button                                                      |
-| type                | `string` `"primary" \| "secondary" \| "link" \| "danger"` | `"primary"` | Sets the button's variant                                                           |
+| type                | `"primary" \| "secondary" \| "link" \| "danger"` | `"primary"` | Sets the button's variant                                                           |
 
 ## Comntributing
 
