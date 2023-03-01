@@ -1,6 +1,6 @@
 # Vue Awesome Button
 
-Vue Awesome Button is a Vue 3 compatible component that renders an animated 3D button, for you tu use in your own projects.
+Vue Awesome Button is a Vue 3 compatible component that renders an animated 3D button, for you to use in your own projects.
 
 ## Acknowledgments
 
@@ -21,12 +21,12 @@ yarn add vue-awesome-button
 ## `AwesomeButton` example
 ```typescript
 // main.ts
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
 import "vue-awesome-button/style"; // import the button's syles
 
-createApp(App).mount('#app')
+createApp(App).mount('#app');
 ```
 
 ```html
