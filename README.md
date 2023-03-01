@@ -24,7 +24,7 @@ yarn add vue-awesome-button
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import "vue-awesome-button/style"; // import the button's syles
+import "vue-awesome-button/style"; // import the button's styles
 
 createApp(App).mount('#app');
 ```
