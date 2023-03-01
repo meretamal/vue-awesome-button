@@ -19,7 +19,18 @@ yarn add vue-awesome-button
 ```
 
 ## `AwesomeButton` example
+```typescript
+// main.ts
+import { createApp } from 'vue'
+import App from './App.vue'
+
+import "vue-awesome-button/style"; // import the button's syles
+
+createApp(App).mount('#app')
+```
+
 ```html
+<!-- App.vue -->
 <template>
   <AwesomeButton>Hello World</AwesomeButton>
 </template>
